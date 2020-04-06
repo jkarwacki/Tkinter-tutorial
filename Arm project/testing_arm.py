@@ -6,14 +6,11 @@ from matplotlib.figure import Figure
 import matplotlib.animation as animation
 from matplotlib import style
 
-#added
-import matplotlib.pyplot as plt
-
 import tkinter as tk
 from tkinter import ttk
 
 LARGE_FONT = ("Verdana", 12)
-style.use("classic")
+style.use("ggplot")
 
 f = Figure(figsize=(5, 5), dpi=100)
 a = f.add_subplot(111)
@@ -35,6 +32,7 @@ def animate(i):
     a.set_ylim([0, 90])
     a.set_xlim([0, 30])
 
+
 class SeaofBTCapp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -44,7 +42,7 @@ class SeaofBTCapp(tk.Tk):
         # tk.Tk.iconbitmap(self, defualt="icon.ico")
 
         # window title
-        tk.Tk.wm_title(self, "Sea of BTC client")
+        tk.Tk.wm_title(self, "Arm project")
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -134,11 +132,12 @@ class PageThree(tk.Frame):
 
         canvas = FigureCanvasTkAgg(f, self)
         canvas.draw()
-        canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand = True)
+        canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         toolbar = NavigationToolbar2Tk(canvas, self)
         toolbar.update()
-        canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand = True)
+        canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
 
 app = SeaofBTCapp()
 ani = animation.FuncAnimation(f, animate, interval=1000)
