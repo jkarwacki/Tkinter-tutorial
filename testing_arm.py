@@ -6,30 +6,34 @@ from matplotlib.figure import Figure
 import matplotlib.animation as animation
 from matplotlib import style
 
+#added
+import matplotlib.pyplot as plt
 
 import tkinter as tk
 from tkinter import ttk
 
 LARGE_FONT = ("Verdana", 12)
-style.use("ggplot")
+style.use("classic")
 
 f = Figure(figsize=(5, 5), dpi=100)
 a = f.add_subplot(111)
 
 
 def animate(i):
-    pullData = open("sampleData.txt", "r").read()
+    pullData = open("data_new.csv", "r").read()
     dataList = pullData.split('\n')
     xList = []
     yList = []
     for eachLine in dataList:
         if len(eachLine) > 1:
             x, y = eachLine.split(',')
-            xList.append(int(x))
-            yList.append(int(y))
+            xList.append(float(x))
+            yList.append(float(y))
 
     a.clear()
     a.plot(xList, yList)
+    a.set_ylim([0, 90])
+    a.set_xlim([0, 30])
 
 class SeaofBTCapp(tk.Tk):
 
